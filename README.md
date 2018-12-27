@@ -1,5 +1,5 @@
-# SQA Manager backend
- - connects to postgresql DATABASE
+# epress-postgresql-framework
+ - connects to express to postgresql
 
 ### npm codes
 ##### Help list
