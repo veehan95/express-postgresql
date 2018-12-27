@@ -1,0 +1,27 @@
+{
+  "name": "epress-postgresql-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "build": "node src/database/index.js",
+    "migrate": "node src/util/migrate/index.js"
+  },
+  "keywords": [
+    "express",
+    "postgresql",
+    "express-postgresql",
+    "expressjs",
+    "postgres",
+    "express-postgres"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "pg": "^7.7.1"
+  }
+}
