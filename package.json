@@ -2,12 +2,12 @@
   "name": "epress-postgresql-framework",
   "version": "1.0.0",
   "description": "epress-postgresql-framework",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
-    "build": "node src/database/index.js",
-    "migrate": "node src/util/migrate/index.js"
+    "start": "ts-node index.ts",
+    "build": "ts-node src/database/index.ts",
+    "migrate": "ts-node src/util/migrate/index.ts"
   },
   "keywords": [
     "express",
@@ -20,8 +20,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/pg": "^7.4.11",
+    "@types/pino": "^5.8.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "pg": "^7.7.1"
+    "pg": "^7.7.1",
+    "pino": "^5.10.5",
+    "pino-pretty": "^2.5.0",
+    "ts-node": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
   }
 }

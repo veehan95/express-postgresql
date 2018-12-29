@@ -1,0 +1,80 @@
+// this is the tslint with warnings enabled,
+// autofix should skip those with "severity": "warning"
+{
+  "extends": "tslint:recommended",
+  "rules": {
+      "max-line-length": {
+          "options": [120],
+          "severity": "warning"
+      },
+      "no-arg": true,
+      "no-bitwise": true,
+      "no-conditional-assignment": true,
+      "no-consecutive-blank-lines": false,
+
+      // "disallows semicolons at the end of every statement except for when they
+      // are necessary" (useful to learn when semicolons are necessary)
+      "semicolon": [true, "never"],
+      "quotemark": [true, "single", "avoid-template", "avoid-escape"],
+      // for projects involving JSX:
+      // "quotemark": "single", "jsx-double", "avoid-template", "avoid-escape"]
+      // should we really jsx-double?
+      //
+      // imports should technically be ordered by importance of conepts too
+      // we will turn it off for now (can't make a decision yet)
+      "ordered-imports": false,
+      // disable for now, friendlier for people coming from JS,
+      // let's just admit public/private/protected aren't really needed ALL THE TIME
+      "member-access": false,
+      //
+      // bcuz what i follow is this:
+      // https://github.com/standard/standard/issues/414#issuecomment-183838037
+      "arrow-parens": {
+        "options": "ban-single-arg-parens",
+        "severity": "warning"
+      },
+      //
+      // this shit doesn't make sense, it should be grouped by props
+      // based on importance/props priority instead of alphabetical
+      "object-literal-sort-keys": false,
+      //
+      // huehue i have some weird quirk of having some important props
+      // to live in braces
+      "no-string-literal": {
+          "severity": "warning"
+      },
+      // technically should be not allowed for code commits
+      "no-console": {
+          "severity": "warning"
+      },
+      "curly": [true, "ignore-same-line"],
+      // still insists that we don't quite need triple-equals,
+      // though there can be REALLY edge case bugs
+      "triple-equals": false,
+      "whitespace": {
+          "options": [
+              "check-branch",
+              "check-decl",
+              "check-operator",
+              "check-separator",
+              "check-type",
+              "check-typecast",
+              // the defaults from tslint:recommended are above
+              // extra one for check-module
+              "check-module"
+          ]
+      }
+  },
+  "jsRules": {
+      "max-line-length": {
+          "options": [120],
+          "severity": "warning"
+      },
+      "quotemark": [true, "single", "avoid-template", "avoid-escape"],
+      "semicolon": [true, "never"],
+      "object-literal-sort-keys": false,
+      "no-console": {
+          "severity": "warning"
+      }
+  }
+}
