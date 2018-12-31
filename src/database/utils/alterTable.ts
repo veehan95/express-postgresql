@@ -14,7 +14,7 @@ export default class AlterTable {
    * @function connect
    * @return connection message | error message
    */
-  public async connect() {
+  public async connect(): Promise<string|Error> {
     return await this.client.query(`SELECT '${this.tableName}'::regclass;`)
       .then((res: string) => this.posReturn(res, `connected to table ${this.tableName}`))
       .catch((e: Error) => { throw Error(`Table ${this.tableName} Not Found`) })
@@ -50,7 +50,7 @@ export default class AlterTable {
    * @return {string|Error} create message | error message
    */
   public async renameColumn(oldColumnName: string, newColumnName: string): Promise<string|Error> {
-    await this.client.query(`ALTER TABLE ${this.tableName} RENAME COLUMN ${oldColumnName} TO ${newColumnName};`)
+    return await this.client.query(`ALTER TABLE ${this.tableName} RENAME COLUMN ${oldColumnName} TO ${newColumnName};`)
       .then((res: string) => this.posReturn(res, `Column ${oldColumnName} in table ${this.tableName} renamed`
         + ` to ${newColumnName}`))
       .catch((e: Error) => { throw e })
@@ -63,7 +63,7 @@ export default class AlterTable {
    * @return {string|Error} create message | error message
    */
   public async alterColumnDefault(columnName: string, value?: string): Promise<string|Error> {
-    await this.client.query(`ALTER TABLE ${this.tableName} ALTER COLUMN ${columnName} `
+    return await this.client.query(`ALTER TABLE ${this.tableName} ALTER COLUMN ${columnName} `
       + value != null ? `SET DEFAULT ${value};` : 'DROP DEFAULT;')
       .then((res: string) => this.posReturn(res, `Column ${columnName} in table ${this.tableName}, default value `
         + value != null ? `set to ${value}` : 'droped'))
@@ -77,7 +77,7 @@ export default class AlterTable {
    * @return {string|Error} create message | error message
    */
   public async alterColumnNull(columnName: string, nullable: boolean = true): Promise<string|Error> {
-    await this.client.query(`ALTER TABLE ${this.tableName} ALTER COLUMN ${columnName} `
+    return await this.client.query(`ALTER TABLE ${this.tableName} ALTER COLUMN ${columnName} `
       + !nullable ? 'SET NOT NULL;' : 'DROP NOT NULL;')
       .then((res: string) => this.posReturn(res, `Column ${columnName} in table ${this.tableName} set to `
         + !nullable ? 'not nullable' : 'nullable'))
@@ -91,7 +91,7 @@ export default class AlterTable {
    * @return {string|Error} create message | error message
    */
   public async checkColumn(columnName: string, checkCommand: string): Promise<string|Error> {
-    await this.client.query(`ALTER TABLE ${this.tableName} ADD CHECK ${checkCommand};`)
+    return await this.client.query(`ALTER TABLE ${this.tableName} ADD CHECK ${checkCommand};`)
       .then((res: string) => this.posReturn(res, `Column ${columnName} in table ${this.tableName} checks `
         + `${checkCommand}`))
       .catch((e: Error) => { throw e })
@@ -105,7 +105,7 @@ export default class AlterTable {
    * @return {string|Error} create message | error message
    */
   public async alterColumnConstraint(columnName: string, constName: string , constDef: string): Promise<string|Error> {
-    await this.client.query(`ALTER TABLE ${this.tableName} ADD CONSTRAINT ${constName} ${constDef};`)
+    return await this.client.query(`ALTER TABLE ${this.tableName} ADD CONSTRAINT ${constName} ${constDef};`)
       .then((res: string) => this.posReturn(res, `Constraint ${constName} - ${constDef} created in table `
         + `${this.tableName}`))
       .catch((e: Error) => { throw e })
@@ -117,10 +117,23 @@ export default class AlterTable {
    * @return {string|Error} create message | error message
    */
   public async renameTable(newTableName: string): Promise<string|Error> {
-    await this.client.query(`ALTER TABLE ${this.tableName} RENAME TO ${newTableName};`)
+    return await this.client.query(`ALTER TABLE ${this.tableName} RENAME TO ${newTableName};`)
       .then((res: string) => {
           this.tableName = newTableName
           this.posReturn(res, `Table ${this.tableName} renamed to ${newTableName}`)
+        })
+      .catch((e: Error) => { throw e })
+  }
+
+  /**
+   * @function dropTable
+   * @param {string}
+   * @return {string|Error} create message | error message
+   */
+  public async dropTable(): Promise<string|Error> {
+    return await this.client.query(`DROP TABLE ${this.tableName} CASCADE;`)
+      .then((res: string) => {
+          this.posReturn(res, `Table ${this.tableName} has been dropped`)
         })
       .catch((e: Error) => { throw e })
   }

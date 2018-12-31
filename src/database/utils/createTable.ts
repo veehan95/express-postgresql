@@ -15,19 +15,10 @@ export default class CreateTable {
    * @param {string} tableName
    * @return {boolean} failed to create will return false
    */
-  public async createTable(tableName: string): Promise<boolean> {
-    const columns = [
-      'user_id serial PRIMARY KEY',
-      'username VARCHAR (50) UNIQUE NOT NULL',
-      'password VARCHAR (50) NOT NULL',
-      'email VARCHAR (355) UNIQUE NOT NULL',
-      'created_on TIMESTAMP NOT NULL',
-      'last_login TIMESTAMP',
-    ]
-    await this.client.query(`CREATE TABLE ${tableName}(${columns.join(',')});`)
-      .then((res: string) => logger.info(res))
-      .catch((e: any) => logger.fatal(e.stack))
-    return true
+  public async createTable(tableName: string, columns: string[]): Promise<string|Error> {
+    return await this.client.query(`CREATE TABLE ${tableName}(${columns.join(',')});`)
+      .then((res: string) => res.length > 0 ? res : `Table ${tableName} had been created`)
+      .catch((e: any) => {throw e})
   }
 
 }
