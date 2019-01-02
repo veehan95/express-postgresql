@@ -1,9 +1,13 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [ "ES2017" ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "module": "commonjs",
-    "outDir": "./lib",
+    "outDir": "dist",
     "sourceMap": true,
     "listFiles": false,
     "listEmittedFiles": false,
@@ -16,9 +20,19 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "downlevelIteration": true,
+    "resolveJsonModule": true,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "@lib/*": ["util/migrate/src/*"]
+    },
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
   },
   "include": [
     "./src/**/*",

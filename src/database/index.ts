@@ -16,7 +16,7 @@ const query = client.query(
     .catch(e => console.error(e.stack))*/
 import Migrate from './utils/migrate'
 const m = new Migrate()
-m.main()
+m.main()// .then(() => m.end())
 
   /*
 const t2 = new AlterTable(pg.getClient(), 'jasmine')

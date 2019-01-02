@@ -1,7 +1,7 @@
 'use strict'
 import { logger } from '../../tool/index'
-import createFile from './src/create'
-import helpList from './src/help'
+import createFile from './scripts/create'
+import * as helpJson from './scripts/help.json'
 
 switch (process.argv[2].toLowerCase()) {
   case 'g':
@@ -10,6 +10,6 @@ switch (process.argv[2].toLowerCase()) {
     break
   case 'h':
   case 'help':
-    logger.info(helpList)
+    logger.info(helpJson.help)
     break
 }

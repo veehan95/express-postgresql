@@ -24,14 +24,18 @@
     "@types/pino": "^5.8.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "module-alias": "^2.1.0",
     "pg": "^7.7.1",
     "pino": "^5.10.5",
-    "pino-pretty": "^2.5.0",
-    "ts-node": "^7.0.1"
+    "pino-pretty": "^2.5.0"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
+    "ts-node": "^7.0.1",
     "tslint": "^5.12.0",
     "typescript": "^3.2.2"
+  },
+  "_moduleAliases": {
+    "@util-migrate": "src/util/migrate"
   }
 }

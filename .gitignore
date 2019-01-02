@@ -1,1 +1,2 @@
 src/database/migrates/*.*
+node_modules
