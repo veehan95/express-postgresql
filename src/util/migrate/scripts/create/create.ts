@@ -11,7 +11,7 @@ export default class CreateFile {
 
   private importDir: string = '@util-migrate/'
 
-  public createFile(args: string[]): Promise < string > {
+  public createFile(args: string[]): Promise < string > {/*
     const startscript = "'use strict'\r\n"
 
     if (typeof fileName != 'string' || fileName.length <= 0) {
@@ -39,6 +39,9 @@ export default class CreateFile {
         'utf-8',
         err => { err ? reject(err) : resolve(`${filename} created`) },
       )
+    })*/
+    return new Promise((resolve, reject) => {
+      resolve('$filename} created')
     })
   }
 

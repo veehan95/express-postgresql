@@ -4,7 +4,7 @@
   "description": "epress-postgresql-framework",
   "main": "index.ts",
   "scripts": {
-    "test": "ts-node node_modules/jasmine/bin/jasmine src/util/test/migrate/index.spec.ts",
+    "test": "ts-node node_modules/jasmine/bin/jasmine",
     "start": "ts-node index.ts",
     "build": "ts-node src/database/index.ts",
     "migrate": "ts-node src/util/migrate/index.ts"
@@ -40,6 +40,9 @@
     "typescript": "^3.2.2"
   },
   "_moduleAliases": {
-    "@util-migrate": "src/util/migrate"
+    "@database": "src/database",
+    "@tool": "src/tool",
+    "@util": "src/util",
+    "@util-migrate-scripts": "src/util/migrate/scripts"
   }
 }

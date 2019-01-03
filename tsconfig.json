@@ -27,7 +27,10 @@
     "moduleResolution": "node",
     "baseUrl": "src",
     "paths": {
-      "@lib/*": ["util/migrate/src/*"]
+      "@database/*": ["database/*"],
+      "@tool/*": ["tool/*"],
+      "@util/*": ["util/*"],
+      "@util-migrate-scripts/*": ["util/migrate/scripts/*"]
     },
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
