@@ -15,9 +15,9 @@ export default class Migrate {
   public async main() {
       return await fs.readdir('./src/database/migrates', (err: Error, items: string[]) => {
         items.forEach(script => {
-          const t = require(`../migrates/${script.substring(0, script.length - 3)}`)
-          const temp = new t.default()
-          temp.main(this.client, this.pg)
+          // const t = require(`../../databse/migrates/${script.substring(0, script.length - 3)}`)
+          // const temp = new t.default()
+          // temp.main(this.client, this.pg)
         })
       })
   }

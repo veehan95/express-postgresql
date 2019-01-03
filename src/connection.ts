@@ -1,6 +1,6 @@
 'use strict'
 import { Client } from 'pg'
-import { user, host, database, password, port } from './config'
+import * as json from './config.json'
 
 export default class PgConnection {
 
@@ -11,7 +11,7 @@ export default class PgConnection {
    * @description create client connection to postgres
    */
   constructor() {
-    this.client = new Client({ user, host, database, password, port })
+    this.client = new Client(json)
     this.client.connect()
   }
 

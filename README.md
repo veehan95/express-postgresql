@@ -9,6 +9,6 @@ npm run migrate help
 ```
 ##### create new migration script
 ```
-npm run migrate g
-npm run migrate generate
+npm run migrate g:<alterTable|createTable|alterDatabase|createDatabase>
+npm run migrate generate:<alterTable|createTable|alterDatabase|createDatabase>
 ```

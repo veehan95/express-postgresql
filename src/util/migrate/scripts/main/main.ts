@@ -21,7 +21,7 @@ export default class Main {
     switch (true) {
       case /^(g|generate):[a-zA-Z0-9_-]*$/i.test(args[0]):
         const cf = new CreateFile()
-        cf.createFile(args.slice(1))
+        cf.createFile(args)
           .then((message: string) => logger.info(message))
         break
       case /^(h|help)$/i.test(args[0]):
